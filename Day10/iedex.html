@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Student Management System</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="topbar">
+      <div>
+        <h1>Student Management System</h1>
+        <p>Profile photo, status, search, filter, and dashboard</p>
+      </div>
+      <button id="addStudentBtn">+ Add Student</button>
+    </header>
+
+    <section class="dashboard">
+      <div class="card"><h3>Total Students</h3><p id="totalStudents">0</p></div>
+      <div class="card"><h3>Active Students</h3><p id="activeStudents">0</p></div>
+      <div class="card"><h3>Average GPA</h3><p id="avgGpa">0.0</p></div>
+    </section>
+
+    <section class="controls">
+      <input id="searchInput" type="text" placeholder="Search by name, email, branch, course..." />
+      <select id="branchFilter">
+        <option value="all">All Branches</option>
+      </select>
+      <select id="courseFilter">
+        <option value="all">All Courses</option>
+      </select>
+      <select id="statusFilter">
+        <option value="all">All Status</option>
+        <option value="Active">Active</option>
+        <option value="Inactive">Inactive</option>
+      </select>
+    </section>
+
+    <section class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Photo</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Branch</th>
+            <th>Course</th>
+            <th>GPA</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody id="studentTable"></tbody>
+      </table>
+    </section>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

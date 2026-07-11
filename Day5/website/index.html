@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PRAVA 2026 | Annual Technical &amp; Cultural Fest</title>
+<meta name="description" content="PRAVA 2026 — Where Innovation Meets Celebration. Annual technical and cultural fest.">
+ 
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+ 
+<!-- Bootstrap 5 -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css" rel="stylesheet">
+<!-- Bootstrap Icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css">
+ 
+<!-- Custom CSS -->
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+ 
+<!-- ===================== LOADING SCREEN ===================== -->
+<div id="loader" class="loader-screen">
+  <div class="loader-inner">
+    <div class="loader-logo">PRAVA</div>
+    <div class="loader-bar"><span></span></div>
+  </div>
+</div>
+ 
+<!-- ===================== SCROLL PROGRESS BAR ===================== -->
+<div id="scrollProgress" class="scroll-progress"></div>
+ 
+<!-- ===================== CURSOR GLOW ===================== -->
+<div id="cursorGlow" class="cursor-glow d-none d-lg-block"></div>
+ 
+<!-- ===================== TOAST CONTAINER ===================== -->
+<div class="toast-container position-fixed top-0 end-0 p-3" style="z-index: 2000;">
+  <div id="mainToast" class="toast align-items-center border-0" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="d-flex">
+      <div class="toast-body" id="mainToastBody">Notification</div>
+      <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+  </div>
+</div>
+ 
+<!-- ===================== NAVBAR ===================== -->
+<nav class="navbar navbar-expand-lg fixed-top" id="mainNavbar">
+  <div class="container">
+    <a class="navbar-brand" href="#home">
+      <span class="brand-mark">PR<span class="brand-accent">A</span>VA</span>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation">
+      <i class="bi bi-list"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navMenu">
+      <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-1">
+        <li class="nav-item"><a class="nav-link active" href="#home">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="#events">Events</a></li>
+        <li class="nav-item"><a class="nav-link" href="#schedule">Schedule</a></li>
+        <li class="nav-item"><a class="nav-link" href="#gallery">Gallery</a></li>
+        <li class="nav-item"><a class="nav-link" href="#sponsors">Sponsors</a></li>
+        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+        <li class="nav-item ms-lg-3">
+          <button id="themeToggle" class="theme-toggle-btn" aria-label="Toggle dark and light mode" title="Toggle theme">
+            <i class="bi bi-sun-fill"></i>
+          </button>
+        </li>
+        <li class="nav-item ms-lg-2">
+          <a href="#registration" class="btn btn-glow-nav">Register</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+ 
+<!-- ===================== HERO SECTION ===================== -->
+<header id="home" class="hero-section">
+  <div class="particles-bg" id="particlesBg"></div>
+  <div class="hero-glow hero-glow-1"></div>
+  <div class="hero-glow hero-glow-2"></div>
+ 
+  <div class="container hero-content">
+    <div class="row align-items-center">
+      <div class="col-lg-7" data-aos>
+        <span class="hero-eyebrow"><i class="bi bi-stars me-2"></i>7 – 9 October 2026 · Prava Campus Grounds</span>
+        <h1 class="hero-title">
+          <span id="typedHeading"></span><span class="typed-cursor">|</span>
+        </h1>
+        <p class="hero-subheading">Where Innovation Meets Celebration</p>
+        <p class="hero-desc">
+          Three days. One campus. A thousand ideas colliding — hackathons, robotics arenas,
+          live music, and the country's sharpest young minds, all under one banner: PRAVA 2026.
+        </p>
+ 
+        <!-- Countdown -->
+        <div class="countdown-wrap" id="countdown">
+          <div class="countdown-box"><span class="cd-num" id="cdDays">00</span><span class="cd-label">Days</span></div>
+          <div class="countdown-box"><span class="cd-num" id="cdHours">00</span><span class="cd-label">Hours</span></div>
+          <div class="countdown-box"><span class="cd-num" id="cdMins">00</span><span class="cd-label">Mins</span></div>
+          <div class="countdown-box"><span class="cd-num" id="cdSecs">00</span><span class="cd-label">Secs</span></div>
+        </div>
+ 
+        <div class="hero-btns">
+          <a href="#registration" class="btn btn-gradient-glow btn-lg">
+            <i class="bi bi-pencil-square me-2"></i>Register Now
+          </a>
+          <a href="#events" class="btn btn-outline-glow btn-lg">
+            <i class="bi bi-compass me-2"></i>Explore Events
+          </a>
+        </div>
+      </div>
+ 
+      <div class="col-lg-5 d-none d-lg-block text-center" data-aos>
+        <div class="hero-art">
+          <div class="hero-art-ring ring-1"></div>
+          <div class="hero-art-ring ring-2"></div>
+          <div class="hero-art-core">
+            <i class="bi bi-lightning-charge-fill"></i>
+          </div>
+          <div class="floating-chip chip-1"><i class="bi bi-code-slash"></i> Hackathon</div>
+          <div class="floating-chip chip-2"><i class="bi bi-music-note-beamed"></i> Music Fest</div>
+          <div class="floating-chip chip-3"><i class="bi bi-robot"></i> Robo Race</div>
+        </div>
+      </div>
+    </div>
+  </div>
+ 
+  <div class="scroll-indicator">
+    <span></span>
+    <p>Scroll</p>
+  </div>
+</header>
+ 
+<!-- ===================== ABOUT SECTION ===================== -->
+<section id="about" class="section-pad">
+  <div class="container">
+    <div class="row align-items-center g-5">
+      <div class="col-lg-6" data-aos>
+        <div class="about-img-wrap">
+          <div class="about-img-glass">
+            <i class="bi bi-mortarboard-fill about-img-icon"></i>
+          </div>
+          <div class="about-badge">
+            <i class="bi bi-award-fill"></i>
+            <div>
+              <strong>12th Edition</strong>
+              <span>Running since 2014</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6" data-aos>
+        <span class="section-eyebrow">About Prava</span>
+        <h2 class="section-title">A festival built by students, for the curious.</h2>
+        <p class="section-text">
+          PRAVA is our college's flagship annual technical and cultural fest — a three-day
+          convergence of engineers, artists, coders, and performers. It began as a single-day
+          coding meet and has grown into a national gathering that pulls in participants from over
+          fifty campuses.
+        </p>
+ 
+        <div class="row g-3 mt-2">
+          <div class="col-sm-6">
+            <div class="about-point">
+              <i class="bi bi-bullseye"></i>
+              <div><strong>Mission</strong><span>Give every student a stage to build, perform, and compete.</span></div>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="about-point">
+              <i class="bi bi-eye-fill"></i>
+              <div><strong>Vision</strong><span>Become India's most-loved campus fest by 2030.</span></div>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="about-point">
+              <i class="bi bi-people-fill"></i>
+              <div><strong>Why Attend</strong><span>Real prize money, real mentors, real portfolio wins.</span></div>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="about-point">
+              <i class="bi bi-emoji-sunglasses"></i>
+              <div><strong>Experience</strong><span>Concerts, food trucks, and all-night hack rooms.</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+ 
+    <!-- Category Cards -->
+    <div class="row g-4 mt-5">
+      <div class="col-6 col-md-4 col-lg-2" data-aos>
+        <div class="category-card tilt-card">
+          <i class="bi bi-lightbulb-fill"></i>
+          <h6>Innovation</h6>
+        </div>
+      </div>
+      <div class="col-6 col-md-4 col-lg-2" data-aos>
+        <div class="category-card tilt-card">
+          <i class="bi bi-code-square"></i>
+          <h6>Coding</h6>
+        </div>
+      </div>
+      <div class="col-6 col-md-4 col-lg-2" data-aos>
+        <div class="category-card tilt-card">
+          <i class="bi bi-palette-fill"></i>
+          <h6>Culture</h6>
+        </div>
+      </div>
+      <div class="col-6 col-md-4 col-lg-2" data-aos>
+        <div class="category-card tilt-card">
+          <i class="bi bi-robot"></i>
+          <h6>Robotics</h6>
+        </div>
+      </div>
+      <div class="col-6 col-md-4 col-lg-2" data-aos>
+        <div class="category-card tilt-card">
+          <i class="bi bi-controller"></i>
+          <h6>Gaming</h6>
+        </div>
+      </div>
+      <div class="col-6 col-md-4 col-lg-2" data-aos>
+        <div class="category-card tilt-card">
+          <i class="bi bi-mic-fill"></i>
+          <h6>Music</h6>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+ 
+<!-- ===================== STATISTICS SECTION ===================== -->
+<section class="stats-section">
+  <div class="container">
+    <div class="row g-4 text-center">
+      <div class="col-6 col-lg-3" data-aos>
+        <div class="stat-card">
+          <h3><span class="counter" data-target="5000">0</span>+</h3>
+          <p>Participants</p>
+        </div>
+      </div>
+      <div class="col-6 col-lg-3" data-aos>
+        <div class="stat-card">
+          <h3><span class="counter" data-target="80">0</span>+</h3>
+          <p>Events</p>
+        </div>
+      </div>
+      <div class="col-6 col-lg-3" data-aos>
+        <div class="stat-card">
+          <h3><span class="counter" data-target="50">0</span>+</h3>
+          <p>Colleges</p>
+        </div>
+      </div>
+      <div class="col-6 col-lg-3" data-aos>
+        <div class="stat-card">
+          <h3>₹<span class="counter" data-target="10">0</span>L+</h3>
+          <p>Prize Pool</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+ 
+<!-- ===================== EVENTS SECTION ===================== -->
+<section id="events" class="section-pad">
+  <div class="container">
+    <div class="text-center mb-5" data-aos>
+      <span class="section-eyebrow">What's On</span>
+      <h2 class="section-title">Thirteen ways to compete.</h2>
+      <p class="section-text mx-auto" style="max-width:600px;">
+        From all-night hackathons to open-mic showdowns — find your event, then make your case.
+      </p>
+    </div>
+ 
+    <!-- Search + Filter -->
+    <div class="row g-3 justify-content-between align-items-center mb-4" data-aos>
+      <div class="col-md-5">
+        <div class="input-group search-group">
+          <span class="input-group-text"><i class="bi bi-search"></i></span>
+          <input type="text" id="eventSearch" class="form-control" placeholder="Search events…">
+        </div>
+      </div>
+      <div class="col-md-7">
+        <div class="filter-btns d-flex flex-wrap gap-2 justify-content-md-end">
+          <button class="filter-btn active" data-filter="all">All</button>
+          <button class="filter-btn" data-filter="tech">Technical</button>
+          <button class="filter-btn" data-filter="cultural">Cultural</button>
+          <button class="filter-btn" data-filter="gaming">Gaming</button>
+          <button class="filter-btn" data-filter="business">Business</button>
+        </div>
+      </div>
+    </div>
+ 
+    <div class="row g-4" id="eventsGrid"><!-- injected by script.js --></div>
+    <p class="text-center empty-state d-none" id="eventsEmpty">No events match your search. Try another keyword.</p>
+  </div>
+</section>
+ 
+<!-- ===================== SCHEDULE SECTION ===================== -->
+<section id="schedule" class="section-pad section-alt">
+  <div class="container">
+    <div class="text-center mb-5" data-aos>
+      <span class="section-eyebrow">Agenda</span>
+      <h2 class="section-title">Three days, mapped out.</h2>
+    </div>
+ 
+    <ul class="nav nav-pills justify-content-center schedule-tabs mb-5" id="dayTabs" data-aos>
+      <li class="nav-item"><button class="nav-link active" data-day="1">Day 1</button></li>
+      <li class="nav-item"><button class="nav-link" data-day="2">Day 2</button></li>
+      <li class="nav-item"><button class="nav-link" data-day="3">Day 3</button></li>
+    </ul>
+ 
+    <div class="timeline" id="timelineWrap"><!-- injected by script.js --></div>
+  </div>
+</section>
+ 
+<!-- ===================== GALLERY SECTION ===================== -->
+<section id="gallery" class="section-pad">
+  <div class="container">
+    <div class="text-center mb-5" data-aos>
+      <span class="section-eyebrow">Moments</span>
+      <h2 class="section-title">Last year, in pictures.</h2>
+    </div>
+    <div class="gallery-masonry" id="galleryGrid"><!-- injected by script.js --></div>
+  </div>
+</section>
+ 
+<!-- Lightbox -->
+<div class="lightbox-overlay" id="lightbox">
+  <button class="lightbox-close" id="lightboxClose"><i class="bi bi-x-lg"></i></button>
+  <button class="lightbox-nav lightbox-prev" id="lightboxPrev"><i class="bi bi-chevron-left"></i></button>
+  <div class="lightbox-img-wrap"><div class="lightbox-img" id="lightboxImg"></div></div>
+  <button class="lightbox-nav lightbox-next" id="lightboxNext"><i class="bi bi-chevron-right"></i></button>
+</div>
+ 
+<!-- ===================== SPONSORS SECTION ===================== -->
+<section id="sponsors" class="section-pad section-alt">
+  <div class="container">
+    <div class="text-center mb-5" data-aos>
+      <span class="section-eyebrow">Backed By</span>
+      <h2 class="section-title">Our sponsors.</h2>
+    </div>
+ 
+    <h6 class="sponsor-tier-label"><i class="bi bi-gem"></i> Gold Partners</h6>
+    <div class="sponsor-track-wrap mb-4" data-aos>
+      <div class="sponsor-track" id="sponsorGold"></div>
+    </div>
+ 
+    <h6 class="sponsor-tier-label"><i class="bi bi-circle-fill" style="color:#c0c0c0;"></i> Silver Partners</h6>
+    <div class="sponsor-track-wrap mb-4" data-aos>
+      <div class="sponsor-track sponsor-track-rev" id="sponsorSilver"></div>
+    </div>
+ 
+    <h6 class="sponsor-tier-label"><i class="bi bi-circle-fill" style="color:#cd7f32;"></i> Bronze Partners</h6>
+    <div class="sponsor-track-wrap" data-aos>
+      <div class="sponsor-track" id="sponsorBronze"></div>
+    </div>
+  </div>
+</section>
+ 
+<!-- ===================== REGISTRATION SECTION ===================== -->
+<section id="registration" class="section-pad">
+  <div class="container">
+    <div class="text-center mb-5" data-aos>
+      <span class="section-eyebrow">Join Us</span>
+      <h2 class="section-title">Register for PRAVA 2026</h2>
+      <p class="section-text mx-auto" style="max-width:600px;">
+        <span id="regCounter">0</span> participants have already secured their spot. You're next.
+      </p>
+    </div>
+ 
+    <div class="reg-form-card mx-auto" data-aos>
+      <form id="registrationForm" novalidate>
+        <div class="row g-3">
+ 
+          <div class="col-md-6">
+            <label class="form-label">Full Name</label>
+            <input type="text" class="form-control" id="fullName" required>
+            <div class="invalid-feedback">Please enter your full name.</div>
+          </div>
+ 
+          <div class="col-md-6">
+            <label class="form-label">Email</label>
+            <input type="email" class="form-control" id="email" required>
+            <div class="invalid-feedback">Enter a valid email address.</div>
+          </div>
+ 
+          <div class="col-md-6">
+            <label class="form-label">Phone Number</label>
+            <input type="tel" class="form-control" id="phone" maxlength="10" placeholder="10-digit number" required>
+            <div class="invalid-feedback">Enter a valid 10-digit phone number.</div>
+          </div>
+ 
+          <div class="col-md-6">
+            <label class="form-label">Date of Birth</label>
+            <input type="date" class="form-control" id="dob" required>
+            <div class="invalid-feedback">You must be at least 15 years old.</div>
+          </div>
+ 
+          <div class="col-md-6">
+            <label class="form-label">College Name</label>
+            <input type="text" class="form-control" id="collegeName" required>
+            <div class="invalid-feedback">Please enter your college name.</div>
+          </div>
+ 
+          <div class="col-md-6">
+            <label class="form-label">University</label>
+            <input type="text" class="form-control" id="university" required>
+            <div class="invalid-feedback">Please enter your university.</div>
+          </div>
+ 
+          <div class="col-md-4">
+            <label class="form-label">Branch</label>
+            <input type="text" class="form-control" id="branch" placeholder="e.g. CSE" required>
+            <div class="invalid-feedback">Please enter your branch.</div>
+          </div>
+ 
+          <div class="col-md-4">
+            <label class="form-label">Year</label>
+            <select class="form-select" id="year" required>
+              <option value="" selected disabled>Select year</option>
+              <option>1st Year</option><option>2nd Year</option><option>3rd Year</option><option>4th Year</option>
+            </select>
+            <div class="invalid-feedback">Please select your year.</div>
+          </div>
+ 
+          <div class="col-md-4">
+            <label class="form-label">Gender</label>
+            <select class="form-select" id="gender" required>
+              <option value="" selected disabled>Select gender</option>
+              <option>Male</option><option>Female</option><option>Other</option><option>Prefer not to say</option>
+            </select>
+            <div class="invalid-feedback">Please select your gender.</div>
+          </div>
+ 
+          <div class="col-md-4">
+            <label class="form-label">City</label>
+            <input type="text" class="form-control" id="city" required>
+            <div class="invalid-feedback">Please enter your city.</div>
+          </div>
+ 
+          <div class="col-md-4">
+            <label class="form-label">State</label>
+            <input type="text" class="form-control" id="state" required>
+            <div class="invalid-feedback">Please enter your state.</div>
+          </div>
+ 
+          <div class="col-md-4">
+            <label class="form-label">Emergency Contact</label>
+            <input type="tel" class="form-control" id="emergencyContact" maxlength="10" placeholder="10-digit number" required>
+            <div class="invalid-feedback">Enter a valid 10-digit number.</div>
+          </div>
+ 
+          <div class="col-12">
+            <label class="form-label">Address</label>
+            <textarea class="form-control" id="address" rows="2" required></textarea>
+            <div class="invalid-feedback">Please enter your address.</div>
+          </div>
+ 
+          <div class="col-md-6">
+            <label class="form-label">Select Event</label>
+            <select class="form-select" id="selectEvent" required>
+              <option value="" selected disabled>Choose an event</option>
+            </select>
+            <div class="invalid-feedback">Please select an event.</div>
+          </div>
+ 
+          <div class="col-md-6">
+            <label class="form-label">Food Preference</label>
+            <select class="form-select" id="foodPref" required>
+              <option value="" selected disabled>Select preference</option>
+              <option>Vegetarian</option><option>Non-Vegetarian</option><option>Vegan</option>
+            </select>
+            <div class="invalid-feedback">Please select a food preference.</div>
+          </div>
+ 
+          <div class="col-md-4">
+            <label class="form-label">Accommodation Required</label>
+            <select class="form-select" id="accommodation" required>
+              <option value="" selected disabled>Select</option>
+              <option>Yes</option><option>No</option>
+            </select>
+            <div class="invalid-feedback">Please make a selection.</div>
+          </div>
+ 
+          <div class="col-md-4">
+            <label class="form-label">T-Shirt Size</label>
+            <select class="form-select" id="tshirtSize" required>
+              <option value="" selected disabled>Select size</option>
+              <option>S</option><option>M</option><option>L</option><option>XL</option><option>XXL</option>
+            </select>
+            <div class="invalid-feedback">Please select a size.</div>
+          </div>
+ 
+          <div class="col-md-4">
+            <label class="form-label">Upload College ID</label>
+            <input type="file" class="form-control" id="collegeId" accept="image/*,.pdf" required>
+            <div class="invalid-feedback">Please upload your college ID.</div>
+          </div>
+ 
+          <div class="col-md-6">
+            <label class="form-label">Password</label>
+            <div class="input-group">
+              <input type="password" class="form-control" id="password" required>
+              <span class="input-group-text pw-toggle" data-target="password"><i class="bi bi-eye"></i></span>
+            </div>
+            <div class="pw-strength" id="pwStrength"><span></span></div>
+            <div class="invalid-feedback">Min 8 chars, with a number &amp; a letter.</div>
+          </div>
+ 
+          <div class="col-md-6">
+            <label class="form-label">Confirm Password</label>
+            <div class="input-group">
+              <input type="password" class="form-control" id="confirmPassword" required>
+              <span class="input-group-text pw-toggle" data-target="confirmPassword"><i class="bi bi-eye"></i></span>
+            </div>
+            <div class="invalid-feedback">Passwords do not match.</div>
+          </div>
+ 
+          <div class="col-12">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="agreeTerms" required>
+              <label class="form-check-label" for="agreeTerms">
+                I agree to the <a href="#" class="link-glow">Terms &amp; Conditions</a>
+              </label>
+              <div class="invalid-feedback">You must accept the terms to continue.</div>
+            </div>
+          </div>
+ 
+          <div class="col-12 d-flex gap-3 mt-2">
+            <button type="submit" class="btn btn-gradient-glow flex-grow-1">
+              <i class="bi bi-send-check me-2"></i>Submit Registration
+            </button>
+            <button type="reset" class="btn btn-outline-glow">
+              <i class="bi bi-arrow-counterclockwise me-2"></i>Reset
+            </button>
+          </div>
+ 
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+ 
+<!-- Success Modal -->
+<div class="modal fade" id="successModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content success-modal-content">
+      <div class="modal-body text-center py-5">
+        <div class="success-check"><i class="bi bi-check-lg"></i></div>
+        <h3 class="mt-4">Registration Successful!</h3>
+        <p class="text-secondary-custom">Your unique Registration ID:</p>
+        <div class="reg-id-badge" id="regIdOutput">PRAVA2026-0001</div>
+        <p class="mt-3 small text-secondary-custom">A confirmation has been saved. Please keep your Registration ID safe — you'll need it at check-in.</p>
+        <button class="btn btn-gradient-glow mt-3" data-bs-dismiss="modal">Done</button>
+      </div>
+    </div>
+  </div>
+</div>
+ 
+<!-- ===================== TESTIMONIALS SECTION ===================== -->
+<section class="section-pad section-alt">
+  <div class="container">
+    <div class="text-center mb-5" data-aos>
+      <span class="section-eyebrow">Word On Campus</span>
+      <h2 class="section-title">What past attendees say.</h2>
+    </div>
+ 
+    <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel" data-aos>
+      <div class="carousel-inner" id="testimonialInner"><!-- injected --></div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev">
+        <span class="carousel-ctrl-icon"><i class="bi bi-chevron-left"></i></span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next">
+        <span class="carousel-ctrl-icon"><i class="bi bi-chevron-right"></i></span>
+      </button>
+    </div>
+  </div>
+</section>
+ 
+<!-- ===================== FAQ SECTION ===================== -->
+<section id="faq" class="section-pad">
+  <div class="container">
+    <div class="text-center mb-5" data-aos>
+      <span class="section-eyebrow">Answers</span>
+      <h2 class="section-title">Frequently asked questions.</h2>
+    </div>
+ 
+    <div class="accordion faq-accordion mx-auto" id="faqAccordion" style="max-width:800px;" data-aos>
+ 
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+            How do I register for events?
+          </button>
+        </h2>
+        <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+          <div class="accordion-body">Head to the Registration section, fill in your details, choose an event, and submit. You'll receive a unique Registration ID instantly.</div>
+        </div>
+      </div>
+ 
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+            Can I participate in more than one event?
+          </button>
+        </h2>
+        <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+          <div class="accordion-body">Yes — submit a separate registration for each event you'd like to join, as long as the timings don't clash on the schedule.</div>
+        </div>
+      </div>
+ 
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+            Is accommodation provided for outstation participants?
+          </button>
+        </h2>
+        <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+          <div class="accordion-body">Yes. Select "Yes" under Accommodation Required during registration and our team will assign you a dorm on campus for the fest duration.</div>
+        </div>
+      </div>
+ 
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
+            Will I receive a certificate?
+          </button>
+        </h2>
+        <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+          <div class="accordion-body">Every participant receives a digital certificate of participation, and winners additionally receive certificates of merit alongside their prizes.</div>
+        </div>
+      </div>
+ 
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq5">
+            How and when is prize money disbursed?
+          </button>
+        </h2>
+        <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+          <div class="accordion-body">Winners are announced at the closing ceremony on Day 3, and prize money is transferred to the team lead's bank account within 15 working days.</div>
+        </div>
+      </div>
+ 
+    </div>
+  </div>
+</section>
+ 
+<!-- ===================== CONTACT SECTION ===================== -->
+<section id="contact" class="section-pad section-alt">
+  <div class="container">
+    <div class="text-center mb-5" data-aos>
+      <span class="section-eyebrow">Get In Touch</span>
+      <h2 class="section-title">Contact the Prava team.</h2>
+    </div>
+ 
+    <div class="row g-4">
+      <div class="col-lg-5" data-aos>
+        <div class="contact-info-card">
+          <div class="contact-item">
+            <i class="bi bi-geo-alt-fill"></i>
+            <div><strong>Address</strong><span>Prava Campus Grounds, Institute of Technology, Sector 12, New Delhi – 110001</span></div>
+          </div>
+          <div class="contact-item">
+            <i class="bi bi-telephone-fill"></i>
+            <div><strong>Phone</strong><span>+91 98765 43210</span></div>
+          </div>
+          <div class="contact-item">
+            <i class="bi bi-envelope-fill"></i>
+            <div><strong>Email</strong><span>hello@prava-fest.in</span></div>
+          </div>
+          <div class="social-row">
+            <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+            <a href="#" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+            <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+            <a href="#" aria-label="Twitter"><i class="bi bi-twitter-x"></i></a>
+          </div>
+          <div class="map-placeholder mt-4">
+            <i class="bi bi-map"></i>
+            <span>Map preview — embed your Google Maps link here</span>
+          </div>
+        </div>
+      </div>
+ 
+      <div class="col-lg-7" data-aos>
+        <form class="contact-form-card" id="contactForm">
+          <div class="row g-3">
+            <div class="col-md-6">
+              <label class="form-label">Your Name</label>
+              <input type="text" class="form-control" required>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Your Email</label>
+              <input type="email" class="form-control" required>
+            </div>
+            <div class="col-12">
+              <label class="form-label">Subject</label>
+              <input type="text" class="form-control" required>
+            </div>
+            <div class="col-12">
+              <label class="form-label">Message</label>
+              <textarea class="form-control" rows="4" required></textarea>
+            </div>
+            <div class="col-12">
+              <button type="submit" class="btn btn-gradient-glow w-100">
+                <i class="bi bi-send me-2"></i>Send Message
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+ 
+<!-- ===================== FOOTER ===================== -->
+<footer class="footer-section">
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-lg-4">
+        <span class="brand-mark">PR<span class="brand-accent">A</span>VA</span>
+        <p class="mt-3 text-secondary-custom">
+          The annual technical and cultural fest bringing together builders, performers, and dreamers from across the country.
+        </p>
+        <div class="social-row">
+          <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+          <a href="#" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+          <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+          <a href="#" aria-label="Twitter"><i class="bi bi-twitter-x"></i></a>
+        </div>
+      </div>
+ 
+      <div class="col-6 col-lg-2">
+        <h6 class="footer-heading">Quick Links</h6>
+        <ul class="footer-links">
+          <li><a href="#about">About</a></li>
+          <li><a href="#events">Events</a></li>
+          <li><a href="#schedule">Schedule</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+        </ul>
+      </div>
+ 
+      <div class="col-6 col-lg-2">
+        <h6 class="footer-heading">More</h6>
+        <ul class="footer-links">
+          <li><a href="#sponsors">Sponsors</a></li>
+          <li><a href="#registration">Register</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+ 
+      <div class="col-lg-4">
+        <h6 class="footer-heading">Newsletter</h6>
+        <p class="text-secondary-custom">Get schedule updates and last-minute announcements.</p>
+        <form id="newsletterForm" class="newsletter-form">
+          <input type="email" placeholder="you@college.edu" required>
+          <button type="submit" aria-label="Subscribe"><i class="bi bi-arrow-right"></i></button>
+        </form>
+      </div>
+    </div>
+ 
+    <hr class="footer-divider">
+    <div class="d-flex flex-column flex-md-row justify-content-between align-items-center gap-2">
+      <p class="mb-0 small text-secondary-custom">© 2026 PRAVA Fest. All rights reserved.</p>
+      <p class="mb-0 small text-secondary-custom">Crafted with <i class="bi bi-heart-fill" style="color:#FF4D6D;"></i> by the Prava Web Team</p>
+    </div>
+  </div>
+</footer>
+ 
+<!-- Back to top -->
+<button id="backToTop" class="back-to-top" aria-label="Back to top"><i class="bi bi-arrow-up"></i></button>
+ 
+<!-- Floating Action Button -->
+<div class="fab-wrap">
+  <button class="fab-main" id="fabMain" aria-label="Quick actions"><i class="bi bi-plus-lg"></i></button>
+  <a href="#registration" class="fab-item" style="--i:1" title="Register"><i class="bi bi-pencil-square"></i></a>
+  <a href="#contact" class="fab-item" style="--i:2" title="Contact"><i class="bi bi-chat-dots-fill"></i></a>
+  <a href="#home" class="fab-item" style="--i:3" title="Home"><i class="bi bi-house-fill"></i></a>
+</div>
+ 
+<!-- Bootstrap JS Bundle -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
+<!-- Custom JS -->
+<script src="script.js"></script>
+</body>
+</html>
